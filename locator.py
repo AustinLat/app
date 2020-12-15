@@ -2,15 +2,17 @@
 # add notes like gate codes and maybe even pictures.
 
 from kivy.app import App
-from kivy.uix.label import Label
+from kivy.uix.button import Button
 
-class MainApp(App):
+
+class ButtonApp(App):
  
     def build(self):
-        return Label(text='Hello',
-                size_hint= (.5, .5),
-                pos_hint={'center_x': .5, 'center_y': .5})
+        return Button()
+
+    def on_press_button(self):
+        print('You pressed the button!')
 
 if __name__ == '__main__':
-    app = MainApp()
+    app = ButtonApp()
     app.run()
