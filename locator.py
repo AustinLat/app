@@ -3,15 +3,18 @@
 
 from kivy.app import App
 from kivy.uix.button import Button
-
+from kivy.uix.dropdown import DropDown
 
 class ButtonApp(App):
  
-    def build(self):
+    def build(self): 
         return Button()
 
     def on_press_button(self):
-        print('You pressed the button!')
+        print('Recording site location')
+        f = open("site_locations.txt","a+")
+        f.write("Site name : GPS data \n")
+        f.close()
 
 if __name__ == '__main__':
     app = ButtonApp()
