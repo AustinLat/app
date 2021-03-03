@@ -1,6 +1,6 @@
 
 import kivy
-#from plyer import gps
+from plyer import gps
 from kivy.app import App
 from kivy.uix.button import Button
 from kivy.uix.boxlayout import BoxLayout
@@ -23,23 +23,26 @@ class MyApp(App):
         layout.add_widget(self.txt1)
         
         return layout
+
+    def on_start(self):
+        gps.configure(on_location=self.on_gps_location)
+        gps.start()
+
     def on_text(self, instance, value):
         self.site_name = value
         
     def buttonClicked(self, btn): 
         f = open("site_locations.txt","a+")
-        f.write(f'{self.site_name} :\n')
+        f.write(f'{self.site_name} : {self.gps_location}\n')
         f.close()
 
+    def on_gps_location(self, **kwargs):
+        lat = kwargs['lat']
+        lon = kwargs['lon']
+        self.gps_location = f'{lat} {lon}'
 
-#    def on_start(self):
-#        gps.configure(on_location = self.on_gps_location)
-#        gps.start
-
-#    def on_gps_location(self, **kwargs):
-#        lat = kwargs['lat']
-#        lon = kwargs['lon']
-#        gps_location = f'{lat} {lon}'
+    def on_stop(self):
+        gps.stop()
 
 # run app
 if __name__ == "__main__":
