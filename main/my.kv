@@ -1,0 +1,27 @@
+<MainWidget>
+
+	cols: 2
+	rows: 2
+
+	TextInput:
+		id: tinput
+		multiline: False
+		on_text: app.text_capture()
+
+	Button:
+		id: capbutton
+		text: 'CLICK TO CAPTURE SITE'
+		on_press: app.buttonClicked()
+
+	DropDown:
+		id: scroll
+		size_hint_x: 1
+		size_hint_y: .5
+		Button:
+			size_hint_y: None
+			text: "show sites"
+			on_press: app.site_pop()
+	
+	Label:
+		id: my_custom_label
+		text: 'GPS coords here'	
