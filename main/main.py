@@ -14,7 +14,7 @@ class MainWidget(GridLayout):
 
 class MyApp(App): 
  
-set ttyfastset ttyfast    def build(self): 
+def build(self): 
         return MainWidget()
 
     def on_start(self):
